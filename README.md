@@ -73,13 +73,11 @@ optional arguments:
 
 example: instagram-py -c -vvv -u instatestgod__ -pl rockyou.txt
 
-Report bug, suggestions and new features at https://github.com/deathsec/instagram-py
+Report bug, suggestions and new features at https://github.com/awanvenom/bobol_ig
 
 Instagram-Py Scripting
 
 Instagram-Py now lets you run your custom scripts inside of it for maximum customization of your attacks. This Scripts are simple Python Scripts ( You Can just do anything that is possible with python )
-
-Refer the Wiki to get full information about Instagram-Py Scripting , https://github.com/deathsec/instagram-py/wiki Also look into the examples tree present in this repo , it contains simple example scripts.
 
 You Can Always View the Cracked Passwords Using this command!
 
