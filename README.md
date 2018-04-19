@@ -98,7 +98,7 @@ What we do
 Step 1: Get the magic cookie , which is used to verify device integrity!
 
 Getting the magic cookie is the simplest job , all we need to do is send a get request to https://i.instagram.com/api/v1/si/fetch_headers/?challenge_type=signup&guid= , where the guid get parameter is a random 32 character string. The random 32 character string can be generator using python's simple uuid library , to be specific v4 of UUID. So finally we just have to request the url https://i.instagram.com/api/v1/si/fetch_headers/?challenge_type=signup&guid=800e88b931bf491fa3b4a7afa4e679eb and get the cookie named csrftoken , if we observe the response header we could see that our cookie only expires next year the same day. So by this we only have to make this request once and can use it for a year! How vulnerable is that?...
-https://raw.githubusercontent.com/deathsec/instagram-py/master/observations/cookies.png
+
 
 Step 2: Build a post request with Instagram's signature.
 
@@ -125,10 +125,6 @@ The above will be encoded to JSON , So to test the password we have to post the 
 
 So to test a account with username as USERNAME and password with PASSWORD we simply request this url https://i.instagram.com/api/v1/accounts/login/ig_sig_key_version=4&signed_body=bc90e1b7d430f39152e92b4e7d517bfb231dbe0515ed2071dc784cf876e301c3.%7B%22phone_id%22%3A%20%2232abb45c-f605-4fd7-9b5e-674115516b90%22%2C%20%22_csrftoken%22%3A%20%22PyMH2niVQrk41UIBW0lKilleG7GylluQ%22%2C%20%22username%22%3A%20%22USERNAME%22%2C%20%22guid%22%3A%20%2267ca220c-a9eb-4240-b173-2d253808904d%22%2C%20%22device_id%22%3A%20%22android-283abce46cb0a0bcef4%22%2C%20%22password%22%3A%20%22PASSWORD%22%2C%20%22login_attempt_count%22%3A%20%220%22%7D
 
-Take a look how I did it...
-
-https://raw.githubusercontent.com/deathsec/instagram-py/master/observations/login_create.png
-
 Step 3: With the json response and response code , we determine the password is correct or wrong.
 
 if We get response 200 then the login is success but if we get response 400 , We inspect the json data for clues if it is the correct password or invalid request or too many tries. So we inspect the message from instagram json response!
@@ -140,11 +136,6 @@ Message = The password you entered is incorrect. , then the password is incorrec
 Message as something like word invalid in it then , some other error so just try again, can happen because of wordlist encoding error which i ignored because all the worldlist have encoding error!
 
 Message = Too many tries , Time to change our ip and loop but we don't want to change our magic cookie
-
-Thats it you just hacked instagram with a very simple algorithm!
-Contribution
-
-https://img.shields.io/github/contributors/deathsec/instagram-py.svg?style=flat-square
 
 Contribute anything you can to this repo (Issues | Pull request) , help is much appreciated.
 
